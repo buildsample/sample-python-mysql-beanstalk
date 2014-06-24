@@ -26,5 +26,10 @@ script:
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
 
+
+
 after_success:
   - export PATH=$PATH:$PWD/aws/eb/linux/python2.7/ && pip install -r aws/requirements.txt && eb init && eb push
+
+notifications:
+  email: false
